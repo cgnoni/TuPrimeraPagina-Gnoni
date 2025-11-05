@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<div class="text-center">
+    <h1 class="mb-4">Bienvenido al Blog de Recetas 🍰</h1>
+    <p class="lead">Explorá recetas, creá las tuyas y compartí tu pasión por la cocina.</p>
+    <a href="{% url 'lista_recetas' %}" class="btn btn-success mt-3">Ver recetas</a>
+    <a href="{% url 'nueva_receta' %}" class="btn btn-outline-primary mt-3">Agregar nueva receta</a>
+</div>
+{% endblock %}
