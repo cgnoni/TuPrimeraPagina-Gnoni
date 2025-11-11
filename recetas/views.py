@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Receta
-from .forms import RecetaForm
+from .forms import FormularioReceta as RecetaForm
 
 
 def inicio(request):
