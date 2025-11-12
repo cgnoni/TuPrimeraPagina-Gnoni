@@ -11,3 +11,5 @@ class FormularioReceta(forms.ModelForm):
             "instrucciones": forms.Textarea(attrs={"class": "form-control", "rows": 5, "placeholder": "Instrucciones paso a paso"}),
         }
 
+class BuscarReceta(forms.Form):
+    titulo = forms.CharField(max_length=50, required=False, label="Buscar por título")
