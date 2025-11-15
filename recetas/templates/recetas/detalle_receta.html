@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+{% block title %}Detalle de Receta{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h2 class="mb-4 text-center">{{ receta.titulo }}</h2>
+
+    <div class="card shadow p-4">
+
+        <h4>Ingredientes</h4>
+        <ul>
+        {% for item in receta.ingredientes.splitlines %}
+            {% if item %}
+                <li>{{ item }}</li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+
+        <h4 class="mt-4">Instrucciones</h4>
+        <ol>
+        {% for paso in receta.instrucciones.splitlines %}
+            {% if paso %}
+                <li>{{ paso }}</li>
+            {% endif %}
+        {% endfor %}
+        </ol>
+
+    </div>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a href="{% url 'recetas:editar_receta' receta.id %}" class="btn btn-primary">
+            ✏️ Editar Receta
+        </a>
+        <a href="{% url 'recetas:lista_recetas' %}" class="btn btn-secondary">
+            ⬅️ Volver al listado
+        </a>
+    </div>
+
+</div>
+{% endblock %}
+

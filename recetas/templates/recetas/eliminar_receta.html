@@ -1,0 +1,14 @@
+{% extends "main/base.html" %}
+{% block title %}Eliminar Receta{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'recetas:eliminar_receta' receta.id %}" method="post" class="text-center mt-4">
+    {% csrf_token %}
+    <p class="fs-5 fw-semibold">
+        ¿Estás seguro de eliminar la receta "{{ receta.titulo }}"?
+    </p>
+    <input type="submit" value="Confirmar" class="btn btn-primary mt-2">
+    <input type="button" value="Cancelar" class="btn btn-secondary mt-2" onclick="window.location.href='{% url 'recetas:lista_recetas' %}'">
+</form>
+{% endblock %}

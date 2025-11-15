@@ -1,41 +1,40 @@
-{% extends "base.html" %}
+{% extends "main/base.html" %}
 {% block title %}Listado de Recetas{% endblock %}
+
 {% block content %}
 
 <h2 class="mb-4 text-center">🍴 Listado de Recetas</h2>
 
-<form action="{% url 'lista_recetas' %}" method="get" class="mb-4 text-center">
-  {{ formulario.as_p }}
-  <button type="submit" class="btn btn-primary">🔍 Buscar</button>
+<form action="{% url 'recetas:lista_recetas' %}" method="get" class="d-flex mb-4 gap-2 justify-content-center">
+    {{ formulario }}
+    <button type="submit" class="btn btn-primary">🔍 Buscar</button>
 </form>
 
+{% if listado_de_recetas %}
 <div class="list-group">
-  {% for receta in recetas %}
-  <div class="list-group-item d-flex justify-content-between align-items-center">
-    <div>
-      <h5 class="mb-1">{{ receta.titulo }}</h5>
-      <p class="mb-1">{{ receta.instrucciones }}</p>
-      <small class="text-muted">Ingredientes: {{ receta.ingredientes }}</small>
+
+    {% for receta in listado_de_recetas %}
+    <div class="list-group-item d-flex justify-content-between align-items-center">
+
+        <h5 class="mb-1">{{ receta.titulo }}</h5>
+
+        <div class="d-flex gap-2">
+            <a href="{% url 'recetas:detalle_receta' receta.id %}" class="btn btn-primary btn-sm">📄 Detalles</a>
+            <a href="{% url 'recetas:editar_receta' receta.id %}" class="btn btn-secondary btn-sm">✏️ Editar</a>
+            <a href="{% url 'recetas:eliminar_receta' receta.id %}" class="btn btn-danger btn-sm">🗑 Eliminar</a>
+        </div>
+
     </div>
-    <form
-      action="{% url 'eliminar_receta' receta.id %}"
-      method="post"
-      onsubmit="return confirm('¿Seguro que deseas eliminar esta receta?');"
-    >
-      {% csrf_token %}
-      <button type="submit" class="btn btn-danger btn-sm">🗑 Eliminar</button>
-    </form>
-  </div>
-  {% empty %}
-  <p class="text-center text-muted">No hay recetas registradas.</p>
-  {% endfor %}
+    {% endfor %}
+
 </div>
 
+{% else %}
+<p class="text-center text-muted">No hay recetas aún.</p>
+{% endif %}
+
 <div class="text-center mt-4">
-  <form action="{% url 'inicio' %}">
-    <button type="submit" class="btn btn-secondary">⬅️ Volver al inicio</button>
-  </form>
+    <a href="{% url 'main:inicio' %}" class="btn btn-secondary">⬅️ Volver al inicio</a>
 </div>
 
 {% endblock %}
-

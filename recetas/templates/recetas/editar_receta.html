@@ -1,17 +1,18 @@
 {% extends "main/base.html" %}
-{% block title %}Agregar Receta{% endblock %}
+{% block title %}Editar Receta{% endblock %}
 {% block content %}
 
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
   <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
-    <h2 class="text-center mb-4">📝 Agregar Nueva Receta</h2>
+    <h2 class="text-center mb-4">✏️ Editar Receta</h2>
 
     <form method="post">
       {% csrf_token %}
       {{ form.as_p }}
 
-      <div class="text-center mt-4">
+      <div class="d-flex justify-content-center gap-3 mt-4">
         <button type="submit" class="btn btn-success">💾 Guardar</button>
+        <a href="{% url 'recetas:lista_recetas' %}" class="btn btn-secondary">❌ Cancelar</a>
         <a href="{% url 'main:inicio' %}" class="btn btn-secondary ms-2">⬅️ Volver al inicio</a>
       </div>
     </form>
@@ -19,4 +20,3 @@
 </div>
 
 {% endblock %}
-
