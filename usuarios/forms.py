@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Perfil
 from django.contrib.auth.forms import AuthenticationForm
+from .models import Perfil
+
 
 class RegistroForm(forms.ModelForm):
     password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
@@ -25,7 +26,7 @@ class RegistroForm(forms.ModelForm):
 class PerfilForm(forms.ModelForm):
     class Meta:
         model = Perfil
-        fields = ["imagen"]
+        fields = ["imagen", "bio"]
 
 
 class LoginForm(AuthenticationForm):

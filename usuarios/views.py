@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import RegistroForm, LoginForm, PerfilForm
-from .models import Perfil
 from django.views.generic import DetailView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy 
+from .forms import RegistroForm, LoginForm, PerfilForm
+from .models import Perfil
 
 
 def registro(request):
@@ -35,7 +36,7 @@ def login_view(request):
         if form.is_valid():
             usuario = form.get_user()
             login(request, usuario)
-            return redirect("inicio")
+            return redirect("main:inicio")
     else:
         form = LoginForm()
 
@@ -44,7 +45,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect("inicio")
+    return redirect("main:inicio")
 
 
 @login_required
@@ -70,6 +71,7 @@ class PerfilActualizarView(LoginRequiredMixin, UpdateView):
     model = Perfil
     form_class = PerfilForm
     template_name = "usuarios/perfil_editar.html"
+    success_url = reverse_lazy("usuarios:perfil")
 
-    def get_success_url(self):
-        return self.object.get_absolute_url()
+    def get_object(self):
+        return self.request.user.perfil

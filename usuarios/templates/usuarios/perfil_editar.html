@@ -1,21 +1,24 @@
 {% extends "main/base.html" %}
 {% block title %}Editar Perfil{% endblock %}
+
 {% block content %}
+<div class="container mt-4">
 
-<h2 class="text-center mb-4">✏️ Editar Perfil</h2>
+    <h2 class="mb-4 text-center">Editar Perfil 👤</h2>
 
-<div class="container col-md-6">
-
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <div class="text-center mt-3">
-      <button class="btn btn-success">💾 Guardar Cambios</button>
-      <a href="{{ object.get_absolute_url }}" class="btn btn-secondary">❌ Cancelar</a>
+    <div class="text-center mb-4">
+        <img src="{{ user.perfil.imagen.url }}" alt="Avatar" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover;">
     </div>
-  </form>
 
+    <form method="POST" enctype="multipart/form-data" class="text-center">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary mt-3">💾 Guardar cambios</button>
+
+        <a href="{% url 'usuarios:perfil' %}" class="btn btn-secondary mt-3">
+            ⬅️ Cancelar
+        </a>
+    </form>
 </div>
-
 {% endblock %}
