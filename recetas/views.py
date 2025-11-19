@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import Receta
 from .forms import FormularioReceta, BuscarReceta 
 from django.views.generic import DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def lista_recetas(request):
@@ -23,7 +25,7 @@ def lista_recetas(request):
         "formulario": formulario
     })
 
-
+@login_required
 def nueva_receta(request):
     if request.method == "POST":
         form = FormularioReceta(request.POST)
@@ -35,24 +37,19 @@ def nueva_receta(request):
     return render(request, "recetas/nueva_receta.html", {"form": form})
 
 
-def eliminar_receta(request, id):
-    receta = get_object_or_404(Receta, id=id)
-    receta.delete()
-    return redirect("recetas/lista_recetas")
-
-
 class DetalleRecetaView(DetailView):
     model = Receta
     template_name = "recetas/detalle_receta.html"
     context_object_name = "receta"
 
-class EditarRecetaView(UpdateView):
+
+class EditarRecetaView(LoginRequiredMixin, UpdateView):
     model = Receta
     template_name = "recetas/editar_receta.html"
     fields = ["titulo", "ingredientes", "instrucciones"]
     success_url = reverse_lazy("recetas:lista_recetas")
 
-class EliminarRecetaView(DeleteView):
+class EliminarRecetaView(LoginRequiredMixin, DeleteView):
     model = Receta
     template_name = "recetas/eliminar_receta.html"
     success_url = reverse_lazy("recetas:lista_recetas")

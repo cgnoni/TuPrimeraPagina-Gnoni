@@ -10,6 +10,10 @@
     <button type="submit" class="btn btn-primary">🔍 Buscar</button>
 </form>
 
+<button class="btn btn-success mb-4">
+    <a href="{% url 'recetas:nueva_receta' %}" class="text-white text-decoration-none">➕ Agregar Nueva Receta</a>
+</button>
+
 {% if listado_de_recetas %}
 <div class="list-group">
 

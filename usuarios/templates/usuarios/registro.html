@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+{% block title %}Registro{% endblock %}
+{% block content %}
+
+<h2 class="text-center mb-4">📝 Crear Cuenta</h2>
+
+<div class="container col-md-6">
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <h5>Datos del usuario</h5>
+    {{ form.as_p }}
+
+    <h5 class="mt-4">Imagen de perfil</h5>
+    {{ perfil_form.as_p }}
+
+    <div class="text-center mt-3">
+      <button type="submit" class="btn btn-success">✔️ Registrarme</button>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}
+
+
