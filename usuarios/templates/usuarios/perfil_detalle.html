@@ -1,0 +1,24 @@
+{% extends "main/base.html" %}
+{% block title %}Perfil de {{ perfil.user.username }}{% endblock %}
+{% block content %}
+
+<h2 class="text-center mb-4">👤 Perfil de {{ perfil.user.username }}</h2>
+
+<div class="container col-md-6 text-center">
+
+    {% if perfil.imagen %}
+        <img src="{{ perfil.imagen.url }}" class="img-thumbnail mb-3" width="160">
+    {% else %}
+        <p class="text-muted">Sin imagen de perfil</p>
+    {% endif %}
+
+    <p><strong>Usuario:</strong> {{ perfil.user.username }}</p>
+    <p><strong>Email:</strong> {{ perfil.user.email }}</p>
+
+    <a href="{% url 'usuarios:perfil_editar' perfil.id %}" class="btn btn-primary mt-3">
+        ✏️ Editar Perfil
+    </a>
+
+</div>
+
+{% endblock %}

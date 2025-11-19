@@ -1,10 +1,64 @@
 {% extends "main/base.html" %}
 {% block title %}Inicio{% endblock %}
+
 {% block content %}
-<div class="text-center">
-    <h1 class="mb-4">Bienvenido a tu Recetario 🍰</h1>
-    <p class="lead">Explorá recetas, creá las tuyas y compartí tu pasión por la cocina.</p>
-    <a href="{% url 'recetas:lista_recetas' %}" class="btn btn-success mt-3">📖 Ver recetas</a>
-    <a href="{% url 'recetas:nueva_receta' %}" class="btn btn-outline-primary mt-3">➕ Agregar Receta</a>
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Bienvenido a tu Recetario 🍰</h1>
+        <p class="lead text-muted">
+            Guardá tus recetas favoritas, creá nuevas y disfrutá de la cocina día a día.
+        </p>
+
+        <!-- Imagen ilustrativa -->
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+             alt="Cocina"
+             class="img-fluid rounded shadow-lg mt-4"
+             style="max-width: 70%;">
+
+    <div class="row text-center mt-5">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">📖 Tus recetas</h5>
+                    <p class="card-text">
+                        Organizá y accedé rápidamente a todas tus preparaciones.
+                    </p>
+                    <a href="{% url 'recetas:lista_recetas' %}" class="btn btn-outline-success">
+                        Ver recetas
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">🧁 Crear receta</h5>
+                    <p class="card-text">
+                        Guardá ingredientes, pasos e imágenes para no olvidarte nunca.
+                    </p>
+                    <a href="{% url 'recetas:nueva_receta' %}" class="btn btn-outline-primary">
+                        Crear receta
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title">👩‍🍳 Tu perfil</h5>
+                    <p class="card-text">
+                        Personalizá tu usuario y subí tu foto de perfil.
+                    </p>
+                    <a href="{% url 'usuarios:perfil' %}" class="btn btn-outline-secondary">
+                        Ir al perfil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 {% endblock %}
