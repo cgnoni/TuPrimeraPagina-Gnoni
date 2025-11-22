@@ -1,5 +1,6 @@
 {% extends "main/base.html" %}
 {% block title %}Inicio{% endblock %}
+{% load static %}
 
 {% block content %}
 <div class="container mt-5">
@@ -10,14 +11,13 @@
             Guardá tus recetas favoritas, creá nuevas y disfrutá de la cocina día a día.
         </p>
 
-        <!-- Imagen ilustrativa -->
-        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
-             alt="Cocina"
+        <img src="{% static 'main/img/inicio.jpg' %}"
+             alt="inicio"
              class="img-fluid rounded shadow-lg mt-4"
              style="max-width: 70%;">
 
     <div class="row text-center mt-5">
-        <div class="col-md-4 mb-4">
+        <div class="text-center col-md-4 mb-4">
             <div class="card shadow-sm border-0">
                 <div class="card-body">
                     <h5 class="card-title">📖 Tus recetas</h5>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="text-center col-md-4 mb-4">
             <div class="card shadow-sm border-0">
                 <div class="card-body">
                     <h5 class="card-title">🧁 Crear receta</h5>
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="col-md-4 mb-4">
+        <div class="text-center col-md-4 mb-4">
             <div class="card shadow-sm border-0">
                 <div class="card-body">
                     <h5 class="card-title">👩‍🍳 Tu perfil</h5>

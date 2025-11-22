@@ -26,6 +26,10 @@
             </a>
         <div>
           <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'main:acerca_de_mi' %}">ℹ️ Acerca de mí</a>
+            </li>
+
             {% if user.is_authenticated %}
 
             <li class="nav-item">

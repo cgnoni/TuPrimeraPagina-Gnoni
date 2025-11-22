@@ -1,0 +1,49 @@
+{% extends "main/base.html" %}
+{% block title %}Acerca de mí{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex justify-content-center mt-5">
+    <div class="card shadow-lg" style="max-width: 800px; width: 100%; border-radius: 15px;">
+        <div class="row g-0 align-items-center">
+
+            <div class="col-md-4 text-center p-4 bg-primary text-white rounded-start">
+                <img src="{% static 'main/img/perfil.jpg' %}" 
+                     class="img-fluid rounded-circle shadow-sm mb-3" 
+                     alt="Foto de {{ nombre }}" 
+                     style="max-height: 180px; object-fit: cover;">
+                <h4 class="fw-bold">{{ nombre }}</h4>
+                <p class="mb-1">{{ profesion }}</p>
+            </div>
+
+            <div class="col-md-8 p-4">
+                <h5 class="text-muted mb-3">Sobre mí</h5>
+                
+                <p style="line-height: 1.6; text-align: justify;">
+                    ¡Hola! Soy Camila Ayelén Gnoni, bibliotecaria y diseñadora UX/UI apasionada por la tecnología, la lectura y la creatividad en todas sus formas. Me encanta aprender cosas nuevas y aplicarlas de manera práctica para mejorar la vida de las personas, ya sea a través de la organización de información, el diseño de experiencias digitales o compartiendo conocimientos.
+                </p>
+                <p style="line-height: 1.6; text-align: justify;">
+                    En este blog comparto recetas de cocina para que preparar comidas sea fácil, divertido y accesible. Me gusta que mis contenidos sean claros, prácticos y agradables de leer, siempre con un toque personal.
+                </p>
+                <p style="line-height: 1.6; text-align: justify;">
+                    Además, disfruto explorando nuevas herramientas digitales, desarrollando proyectos de diseño y conectando con personas que comparten intereses similares. ¡Gracias por visitar mi blog y espero que disfrutes de las recetas y consejos que comparto!
+                </p>
+
+                <div class="mt-4">
+                    <h6 class="text-muted mb-2">Sígueme en redes</h6>
+                    <a href="https://www.linkedin.com/in/camila-ayelen-gnoni" target="_blank" class="btn btn-outline-primary btn-sm me-2 mb-2">
+                        🔗 LinkedIn
+                    </a>
+                    <a href="https://github.com/cgnoni" target="_blank" class="btn btn-outline-dark btn-sm me-2 mb-2">
+                        🐙 GitHub
+                    </a>
+                </div>
+
+                <div class="mt-4">
+                    <a href="{% url 'main:inicio' %}" class="btn btn-secondary">⬅ Volver al inicio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
