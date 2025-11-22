@@ -4,7 +4,7 @@ from .models import Receta
 class FormularioReceta(forms.ModelForm):
     class Meta:
         model = Receta
-        fields = ["titulo", "ingredientes", "instrucciones"]
+        fields = ["titulo", "ingredientes", "instrucciones", "imagen"]
         widgets = {
             "titulo": forms.TextInput(attrs={"class": "form-control", "placeholder": "Título de la receta"}),
             "ingredientes": forms.Textarea(attrs={"class": "form-control", "rows": 3, "placeholder": "Ingredientes"}),

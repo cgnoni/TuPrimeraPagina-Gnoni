@@ -27,7 +27,9 @@ class PerfilForm(forms.ModelForm):
     class Meta:
         model = Perfil
         fields = ["imagen", "bio"]
-
+        widgets = {
+            'imagen': forms.ClearableFileInput(attrs={'initial_text': '', 'input_text': 'Seleccionar archivo', 'clear_checkbox_label': ''}),
+        }
 
 class LoginForm(AuthenticationForm):
     pass

@@ -6,14 +6,17 @@
 
 <div class="container col-md-6 text-center">
 
-    {% if perfil.imagen %}
-        <img src="{{ perfil.imagen.url }}" class="img-thumbnail mb-3" width="160">
-    {% else %}
-        <p class="text-muted">Sin imagen de perfil</p>
-    {% endif %}
-
+    <img src="{{ perfil.imagen.url }}" class="rounded-circle img-thumbnail mb-2" style="width: 150px; height: 150px; object-fit: cover;">
     <p><strong>Usuario:</strong> {{ perfil.user.username }}</p>
     <p><strong>Email:</strong> {{ perfil.user.email }}</p>
+
+    {% if perfil.bio %}
+        <div class="card border-secondary mb-3 shadow-sm mx-auto" style="max-width: 100%;">
+            <div class="card-body p-3 text-start">
+                <p class="card-text text-center mb-0" style="font-size: 0.95rem; color: #555;">{{ perfil.bio }}</p>
+            </div>
+        </div>
+    {% endif %}
 
     <a href="{% url 'usuarios:perfil_editar' perfil.id %}" class="btn btn-primary mt-3">
         ✏️ Editar Perfil
@@ -22,3 +25,4 @@
 </div>
 
 {% endblock %}
+

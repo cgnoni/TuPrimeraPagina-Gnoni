@@ -1,32 +1,31 @@
 {% extends "main/base.html" %}
+{% load static %}
 {% block title %}Mi Perfil{% endblock %}
+
 {% block content %}
+<div class="container text-center mt-4">
+    <h2 class="text-center mb-4">👤 Mi Perfil</h2>
 
-<h2 class="text-center mb-4">👤 Mi Perfil</h2>
+    <div class="card shadow p-4 mx-auto" style="max-width: 600px;">
+        <div class="text-center mb-3">
+          <img src="{{ perfil.imagen.url }}" class="rounded-circle img-thumbnail mb-2" style="width: 150px; height: 150px; object-fit: cover;">
+        </div>
 
-<div class="container col-md-6">
+        <h4 class="mb-3">Nombre de usuario: {{ perfil.user.username }}</h4>
 
-  {% if perfil.imagen %}
-    <div class="text-center mb-3">
-      <img src="{{ user.perfil.imagen.url }}" alt="Avatar" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover;">
+        {% if perfil.bio %}
+            <div class="p-3 border rounded shadow-sm bg-light text-start mx-auto mb-3" style="max-width: 90%; position: relative;">
+                <p class="mb-0" style="font-size: 0.95rem; color: #555;">{{ perfil.bio }}</p>
+            </div>
+        {% endif %}
+
+        <div class="text-center mt-3">
+            <a href="{% url 'usuarios:perfil_detalle' perfil.id %}" class="btn btn-info">🔎 Ver Detalle</a>
+            <a href="{% url 'main:inicio' %}" class="btn btn-secondary">⬅ Volver</a>
+        </div>
     </div>
-  {% else %}
-    <p class="text-center">No tienes imagen de perfil todavía.</p>
-  {% endif %}
-
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ perfil_form.as_p }}
-
-    <div class="text-center mt-3">
-      <a href="{% url 'usuarios:perfil_detalle' perfil.id %}" class="btn btn-info">
-        🔎 Ver Detalle
-      </a>
-      <button class="btn btn-primary">💾 Guardar Cambios</button>
-    </div>
-  </form>
-
 </div>
-
 {% endblock %}
+
+
 

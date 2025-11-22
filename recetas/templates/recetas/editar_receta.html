@@ -2,18 +2,34 @@
 {% block title %}Editar Receta{% endblock %}
 {% block content %}
 
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-  <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
+<div
+  class="container d-flex justify-content-center align-items-center"
+  style="min-height: 80vh"
+>
+  <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%">
     <h2 class="text-center mb-4">✏️ Editar Receta</h2>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
+      
+      {% if object.imagen %}
+          <p>Imagen actual:</p>
+          <img src="{{ object.imagen.url }}" class="img-fluid mb-3" style="max-height: 200px; object-fit: cover"/>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" name="eliminar_imagen" id="eliminar_imagen"/>
+            <label class="form-check-label" for="eliminar_imagen">Eliminar imagen</label>
+          </div>
+      {% endif %}
 
       <div class="d-flex justify-content-center gap-3 mt-4">
         <button type="submit" class="btn btn-success">💾 Guardar</button>
-        <a href="{% url 'recetas:lista_recetas' %}" class="btn btn-secondary">❌ Cancelar</a>
-        <a href="{% url 'main:inicio' %}" class="btn btn-secondary ms-2">⬅️ Volver al inicio</a>
+        <a href="{% url 'recetas:lista_recetas' %}" class="btn btn-secondary"
+          >❌ Cancelar</a
+        >
+        <a href="{% url 'main:inicio' %}" class="btn btn-secondary ms-2"
+          >⬅️ Volver al inicio</a
+        >
       </div>
     </form>
   </div>

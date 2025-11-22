@@ -46,8 +46,17 @@ class DetalleRecetaView(DetailView):
 class EditarRecetaView(LoginRequiredMixin, UpdateView):
     model = Receta
     template_name = "recetas/editar_receta.html"
-    fields = ["titulo", "ingredientes", "instrucciones"]
+    fields = ["titulo", "ingredientes", "instrucciones", "imagen"]
     success_url = reverse_lazy("recetas:lista_recetas")
+    
+    def form_valid(self, form):
+        receta = form.instance
+        # Verifica si el checkbox "eliminar_imagen" está marcado
+        if self.request.POST.get("eliminar_imagen"):
+            if receta.imagen:
+                receta.imagen.delete()
+                receta.imagen = None
+        return super().form_valid(form)
 
 class EliminarRecetaView(LoginRequiredMixin, DeleteView):
     model = Receta
