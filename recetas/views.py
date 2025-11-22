@@ -31,7 +31,7 @@ def nueva_receta(request):
         form = FormularioReceta(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("recetas/lista_recetas")
+            return redirect("recetas:lista_recetas")
     else:
         form = FormularioReceta()
     return render(request, "recetas/nueva_receta.html", {"form": form})
