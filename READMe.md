@@ -45,7 +45,6 @@ Este proyecto fue desarrollado como práctica avanzada de Django y UX/UI, combin
 TuPrimeraPagina-Gnoni/
 ├── main/
 │   ├── templates/main/ (base.html, inicio.html, acerca_de_mi.html)
-│   ├── static/main/ (CSS, imágenes, JS)
 ├── recetas/
 │   ├── templates/recetas/ (lista_recetas.html, detalle_receta.html, editar_receta.html)
 │   ├── forms.py (Formulario de búsqueda y creación/edición)
@@ -56,7 +55,10 @@ TuPrimeraPagina-Gnoni/
 │   ├── views.py (Vistas de usuario)
 │   ├── forms.py (PerfilForm, registro, login)
 │   ├── models.py (Perfil)
-├── db.sqlite3
+├── media/ (carpeta de imagenes mas pesadas, alojada en .gitignore)
+├── static/main/ (CSS, imágenes, JS)
+├── db.sqlite3 (base de datos alojada en .gitignore)
+├── venv (carpeta del entorno virtual alojada en .gitignore)
 ├── manage.py
 ├── requirements.txt
 └── README.md
