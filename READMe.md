@@ -2,7 +2,7 @@
 
 Blog de recetas desarrollado en **Django 5.2**, con gestión de usuarios, CRUD de recetas, subida de imágenes, y diseño moderno con **Bootstrap 5**.
 
-Este proyecto fue desarrollado como práctica avanzada de Django y UX/UI, combinando funcionalidades de backend y frontend en un proyecto completo.
+Este proyecto fue desarrollado como práctica avanzada de Python y Django, combinando funcionalidades de backend y frontend en un proyecto completo.
 
 ---
 
