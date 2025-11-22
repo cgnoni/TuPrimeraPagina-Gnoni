@@ -1,10 +1,8 @@
-# Blog de Recetas – TuPrimeraPagina-Gnoni
-
-![Logo](main/static/main/img/logo.png)
+# Blog de Recetas – Camila Gnoni
 
 Blog de recetas desarrollado en **Django 5.2**, con gestión de usuarios, CRUD de recetas, subida de imágenes, y diseño moderno con **Bootstrap 5**.
 
-Este proyecto fue desarrollado como práctica avanzada de Django y UX/UI, combinando funcionalidades de backend y frontend en un proyecto completo.
+Este proyecto fue desarrollado como práctica avanzada de Python y Django, combinando funcionalidades de backend y frontend en un proyecto completo.
 
 ---
 
@@ -28,13 +26,14 @@ Este proyecto fue desarrollado como práctica avanzada de Django y UX/UI, combin
 ### Recetas
 - CRUD completo de recetas:
   - Crear, editar, eliminar y ver detalle.  
-  - Cada receta tiene: `titulo`, `ingredientes`, `instrucciones` y **imagen opcional**.  
+  - Cada receta tiene: `titulo`, `ingredientes`, `instrucciones` e **imagen opcional**.  
 - Subida y manejo de imágenes de recetas.  
 - Listado de recetas con **búsqueda por título**.  
 - Mensajes informativos si no hay recetas o si la búsqueda no arroja resultados.  
 - Listado responsive con tarjetas visuales y botones de acción.
 
-### Página estática
+### Main
+- Templates y vistas generales guardados en una sola aplicación, para más orden y prolijidad.
 - Página de **Acerca de mí / About** con descripción personal, imagen y enlaces a LinkedIn y GitHub.
 
 ---
