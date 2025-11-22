@@ -1,6 +1,4 @@
-# Blog de Recetas – TuPrimeraPagina-Gnoni
-
-![Logo](main/static/main/img/logo.png)
+# Blog de Recetas – Camila Gnoni
 
 Blog de recetas desarrollado en **Django 5.2**, con gestión de usuarios, CRUD de recetas, subida de imágenes, y diseño moderno con **Bootstrap 5**.
 
