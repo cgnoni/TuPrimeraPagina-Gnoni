@@ -98,7 +98,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-5. Crear superusuario (opcional, para admin):
+5. Crear superusuario (opcional, admin ya esta utilizado):
 
 ```bash
 python manage.py createsuperuser
