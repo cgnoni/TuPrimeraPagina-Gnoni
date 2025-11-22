@@ -7,18 +7,26 @@
     <h2 class="mb-4 text-center">Editar Perfil 👤</h2>
 
     <div class="text-center mb-4">
+        {% if user.perfil.imagen %}
         <img src="{{ user.perfil.imagen.url }}" alt="Avatar" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover;">
+        {% else %}
+        <p class="text-muted">Sin imagen de perfil</p>
+        {% endif %}
     </div>
 
     <form method="POST" enctype="multipart/form-data" class="text-center">
         {% csrf_token %}
+
+        <h5>Información del usuario</h5>
         {{ form.as_p }}
 
-        <button type="submit" class="btn btn-primary mt-3">💾 Guardar cambios</button>
+        <hr>
 
-        <a href="{% url 'usuarios:perfil' %}" class="btn btn-secondary mt-3">
-            ⬅️ Cancelar
-        </a>
+        <h5>Perfil</h5>
+        {{ perfil_form.as_p }}
+
+        <button type="submit" class="btn btn-primary mt-3">💾 Guardar cambios</button>
+        <a href="{% url 'usuarios:perfil' %}" class="btn btn-secondary mt-3">⬅️ Cancelar</a>
     </form>
 </div>
 {% endblock %}

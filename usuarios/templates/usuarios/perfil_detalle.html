@@ -8,6 +8,7 @@
 
     <img src="{{ perfil.imagen.url }}" class="rounded-circle img-thumbnail mb-2" style="width: 150px; height: 150px; object-fit: cover;">
     <p><strong>Usuario:</strong> {{ perfil.user.username }}</p>
+    <p><strong>Nombre y apellido:</strong> {{ perfil.user.first_name }} {{ perfil.user.last_name }}</p>
     <p><strong>Email:</strong> {{ perfil.user.email }}</p>
 
     {% if perfil.bio %}

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import DetailView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy 
-from .forms import RegistroForm, LoginForm, PerfilForm
+from .forms import RegistroForm, LoginForm, PerfilForm, UserForm
 from .models import Perfil
 
 
@@ -72,6 +72,27 @@ class PerfilActualizarView(LoginRequiredMixin, UpdateView):
     form_class = PerfilForm
     template_name = "usuarios/perfil_editar.html"
     success_url = reverse_lazy("usuarios:perfil")
+
+    def get_object(self):
+        return self.request.user.perfil
+
+    def get(self, request, *args, **kwargs):
+        perfil = self.get_object()
+        user_form = UserForm(instance=request.user)
+        perfil_form = PerfilForm(instance=perfil)
+        return render(request, self.template_name, {'form': user_form, 'perfil_form': perfil_form})
+
+    def post(self, request, *args, **kwargs):
+        perfil = self.get_object()
+        user_form = UserForm(request.POST, instance=request.user)
+        perfil_form = PerfilForm(request.POST, request.FILES, instance=perfil)
+
+        if user_form.is_valid() and perfil_form.is_valid():
+            user_form.save()
+            perfil_form.save()
+            return redirect(self.success_url)
+
+        return render(request, self.template_name, {'form': user_form, 'perfil_form': perfil_form})
 
     def get_object(self):
         return self.request.user.perfil
