@@ -26,13 +26,14 @@ Este proyecto fue desarrollado como práctica avanzada de Python y Django, combi
 ### Recetas
 - CRUD completo de recetas:
   - Crear, editar, eliminar y ver detalle.  
-  - Cada receta tiene: `titulo`, `ingredientes`, `instrucciones` y **imagen opcional**.  
+  - Cada receta tiene: `titulo`, `ingredientes`, `instrucciones` e **imagen opcional**.  
 - Subida y manejo de imágenes de recetas.  
 - Listado de recetas con **búsqueda por título**.  
 - Mensajes informativos si no hay recetas o si la búsqueda no arroja resultados.  
 - Listado responsive con tarjetas visuales y botones de acción.
 
-### Página estática
+### Main
+- Templates y vistas generales guardados en una sola aplicación, para más orden y prolijidad.
 - Página de **Acerca de mí / About** con descripción personal, imagen y enlaces a LinkedIn y GitHub.
 
 ---
